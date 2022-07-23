@@ -1,0 +1,7 @@
+.card-flip {
+  transform: rotateY(180deg);
+}
+
+.card-flip-back {
+  transform: rotateY(360deg);
+}
