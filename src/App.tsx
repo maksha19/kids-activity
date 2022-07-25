@@ -9,7 +9,7 @@ function App() {
     <div className="flex h-full min-h-full flex-col container mx-auto bg-[#f3f2ef]">
       <BrowserRouter>
         <Routes>
-          <Route path="" element={<HomePage />} />
+          <Route path="/kids-activity" element={<HomePage />} />
           <Route path="/addition" element={<Addition />} />
         </Routes>
       </BrowserRouter>
