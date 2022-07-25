@@ -8,6 +8,7 @@ import {
 } from "react-beautiful-dnd";
 import { StrictModeDroppable } from "../components/StrictModeDroppable";
 import _lodash from "lodash";
+import RangeStep from "../components/range";
 
 type stateElement = {
   id: string;
@@ -87,30 +88,53 @@ const Subtraction = () => {
   const [state, setState] = useState<stateElement[][]>([]);
   const [initNumbersList, setInitNumbersList] = useState<number[]>([]);
   const [cardFlipper, setCardFlipper] = useState(false);
+  const [rangeValue, setRangeValue] = useState("0");
+
+  const playControl: Record<string, { pair: number; limit: number }> = {
+    "0": {
+      pair: 2,
+      limit: 10,
+    },
+    "1": {
+      pair: 3,
+      limit: 10,
+    },
+    "2": {
+      pair: 3,
+      limit: 15,
+    },
+  };
 
   useEffect(() => {
     refreshList();
   }, []);
 
-  const refreshList = () => {
-    const firstNumber = ~~(Math.random() * 10);
-    const secondNumber = ~~(Math.random() * 20);
-    const answer = firstNumber - secondNumber;
+  const refreshList = (e?: string) => {
+    const { pair, limit } = playControl[e ?? rangeValue];
+    const questions: number[] = [];
+    for (let i = 0; i < pair; i++) {
+      questions.push(~~(Math.random() * limit));
+    }
+    const answer = questions.reduce((sum, question) => sum - question);
+    questions.push(answer);
+
     const options = new Set<string>([answer.toString()]);
 
     while (options.size < 4) {
-      const x = ~~(Math.random() * 20);
-      console.log(x);
+      const x = ~~(Math.random() * limit);
       options.add(x.toString());
     }
 
     console.log(options);
-
-    setInitNumbersList([firstNumber, secondNumber, answer]);
     const state1: stateElement[] = [];
     const state2 = getItems(4, _lodash.shuffle([...options]));
+
     setState([state1, state2]);
+    setInitNumbersList(questions);
     setCardFlipper(!cardFlipper);
+    if (e) {
+      setRangeValue(e);
+    }
   };
 
   const onDragEnd = (result: DropResult) => {
@@ -125,7 +149,10 @@ const Subtraction = () => {
     const sInd = +source.droppableId;
     const dInd = +destination.droppableId;
 
-    if (Number(state[sInd][source.index].content) !== initNumbersList[2]) {
+    if (
+      Number(state[sInd][source.index].content) !==
+      initNumbersList[initNumbersList.length - 1]
+    ) {
       return;
     }
 
@@ -145,13 +172,36 @@ const Subtraction = () => {
 
   return (
     <div className="h-screen grid grid-cols-6 mt-[20%] container">
+      <div className="grid col-start-2 col-span-4">
+        <RangeStep
+          value={rangeValue}
+          onChange={(eValue) => refreshList(eValue)}
+        />
+      </div>
       <div className="col-span-full">
         <DragDropContext onDragEnd={onDragEnd}>
           <div>
-            <div className="flex justify-center mt-10 ">
-              <div className="mx-8 text-4xl">{String(initNumbersList[0])}</div>
-              <div className="mx-8 text-4xl">{"-"}</div>
-              <div className="mx-8 text-4xl">{String(initNumbersList[1])}</div>
+            <div className="flex justify-center">
+              {initNumbersList.map((item, index) => {
+                if (index === initNumbersList.length - 1) {
+                  return;
+                }
+
+                if (index !== initNumbersList.length - 2) {
+                  return (
+                    <div key={index} className="flex">
+                      <div className="ml-8 shrink text-4xl">{item}</div>
+                      <div className="ml-8 shrink text-4xl">{"-"}</div>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div key={index} className="ml-8 shrink text-4xl">
+                      {item}
+                    </div>
+                  );
+                }
+              })}
             </div>
 
             <div className="flex justify-center overflow-auto p-8">
