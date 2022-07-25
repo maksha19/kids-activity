@@ -9,6 +9,8 @@ const HomePage = () => {
   const navigationTo = (index: string) => {
     if (index === "0") {
       navigation("/addition");
+    } else if (index === "1") {
+      navigation("/subtraction");
     }
   };
 
@@ -24,7 +26,7 @@ const HomePage = () => {
           <p className="text-4xl text-white">Addition</p>
         </div>
       </HomePageCard>
-      <HomePageCard id="1" onClick={(index) => alert(index)}>
+      <HomePageCard id="1" onClick={(index) => navigationTo(index)}>
         <div className="grid place-content-center ">
           <SvgNumber width="60px" height="60px" viewBox="0 0 60 60">
             <path className="scale-250" d="M20,12 L4,12" />
