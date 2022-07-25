@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/kids-activity/static/css/main.eddd7ced.css",
-    "main.js": "/kids-activity/static/js/main.f36f468f.js",
-    "static/js/787.1d9ec42c.chunk.js": "/kids-activity/static/js/787.1d9ec42c.chunk.js",
-    "index.html": "/kids-activity/index.html",
-    "main.eddd7ced.css.map": "/kids-activity/static/css/main.eddd7ced.css.map",
-    "main.f36f468f.js.map": "/kids-activity/static/js/main.f36f468f.js.map",
-    "787.1d9ec42c.chunk.js.map": "/kids-activity/static/js/787.1d9ec42c.chunk.js.map"
+    "main.css": "/static/css/main.04986504.css",
+    "main.js": "/static/js/main.481af537.js",
+    "static/js/787.1d9ec42c.chunk.js": "/static/js/787.1d9ec42c.chunk.js",
+    "index.html": "/index.html",
+    "main.04986504.css.map": "/static/css/main.04986504.css.map",
+    "main.481af537.js.map": "/static/js/main.481af537.js.map",
+    "787.1d9ec42c.chunk.js.map": "/static/js/787.1d9ec42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eddd7ced.css",
-    "static/js/main.f36f468f.js"
+    "static/css/main.04986504.css",
+    "static/js/main.481af537.js"
   ]
 }
