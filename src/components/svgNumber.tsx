@@ -23,6 +23,10 @@ const SvgNumber = (props: PropsWithChildren<Props>): JSX.Element => {
       role="presentation"
       viewBox={viewBox}
       width={size || width}
+      stroke="#FFF"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >

@@ -6,9 +6,8 @@ import {
   DropResult,
   DraggableLocation,
 } from "react-beautiful-dnd";
-import { StrictModeDroppable } from "./components/StrictModeDroppable";
+import { StrictModeDroppable } from "../components/StrictModeDroppable";
 import _lodash from "lodash";
-import "./dragDrop.css";
 
 type stateElement = {
   id: string;
@@ -64,8 +63,8 @@ const getItemStyle = (
   userSelect: "none",
   padding: grid * 2,
   margin: `0  ${grid}px`,
-  height: "10vh",
-  width: "10vh",
+  height: "9vh",
+  width: "9vh",
   borderRadius: "50%",
 
   // change background colour if dragging
@@ -84,7 +83,7 @@ const getListStyle = (isDraggingOver: boolean) => ({
   minWidth: "20vh",
 });
 
-const QuoteApp = () => {
+const Addition = () => {
   const [state, setState] = useState<stateElement[][]>([]);
   const [initNumbersList, setInitNumbersList] = useState<number[]>([]);
   const [cardFlipper, setCardFlipper] = useState(false);
@@ -145,8 +144,8 @@ const QuoteApp = () => {
   };
 
   return (
-    <div className="h-full content-center container mx-auto">
-      <div className="justify-center">
+    <div className="h-screen grid grid-cols-6 mt-[20%] container">
+      <div className="col-span-full">
         <DragDropContext onDragEnd={onDragEnd}>
           <div>
             <div className="flex justify-center mt-10 ">
@@ -168,6 +167,7 @@ const QuoteApp = () => {
                     {...provided.droppableProps}
                     className="justify-center sticky"
                   >
+                    <div className="h-[12vh] w-[12vh] bg-[#f3f2ef] absolute "></div>
                     {state[0].map((item, index) => (
                       <Draggable
                         key={item.id}
@@ -175,24 +175,26 @@ const QuoteApp = () => {
                         index={index}
                       >
                         {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={getItemStyle(
-                              snapshot.isDragging,
-                              provided.draggableProps.style
-                            )}
-                            className="flex items-center justify-center"
-                          >
+                          <div className="z-30">
                             <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "space-around",
-                              }}
-                              className="justify-center text-4xl"
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              style={getItemStyle(
+                                snapshot.isDragging,
+                                provided.draggableProps.style
+                              )}
+                              className="flex items-center justify-center"
                             >
-                              {item.content}
+                              <div
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "space-around",
+                                }}
+                                className="justify-center text-4xl"
+                              >
+                                {item.content}
+                              </div>
                             </div>
                           </div>
                         )}
@@ -204,7 +206,7 @@ const QuoteApp = () => {
               </StrictModeDroppable>
             </div>
             <div className="h-10vh"></div>
-            <div className="flex justify-center  overflow-auto p-8">
+            <div className="flex justify-center mx-4">
               <StrictModeDroppable
                 key={1}
                 droppableId={"1"}
@@ -269,4 +271,4 @@ const QuoteApp = () => {
   );
 };
 
-export default QuoteApp;
+export default Addition;
