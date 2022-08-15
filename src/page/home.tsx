@@ -7,10 +7,22 @@ const HomePage = () => {
   const navigation = useNavigate();
 
   const navigationTo = (index: string) => {
-    if (index === "0") {
-      navigation("/addition");
-    } else if (index === "1") {
-      navigation("/subtraction");
+    switch (index) {
+      case "0": {
+        navigation("/addition");
+        break;
+      }
+      case "1": {
+        navigation("/subtraction");
+        break;
+      }
+      case "2": {
+        break;
+      }
+      case "3": {
+        navigation("/english");
+        break;
+      }
     }
   };
 
@@ -38,6 +50,9 @@ const HomePage = () => {
       </HomePageCard>
       <HomePageCard id="2" onClick={(index) => alert(index)}>
         <p className="text-7xl my-2 text-white">தமிழ்</p>
+      </HomePageCard>
+      <HomePageCard id="3" onClick={(index) => navigationTo(index)}>
+        <p className="text-7xl my-2 text-white">English</p>
       </HomePageCard>
     </div>
   );

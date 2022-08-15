@@ -170,9 +170,12 @@ const Addition = () => {
   };
 
   return (
-    <div className="h-screen grid grid-cols-6 mt-[20%] container">
+    <div className="h-screen grid grid-cols-6  container">
       <div className="grid col-start-2 col-span-4">
-        <RangeStep value={rangeValue} onChange={(eValue) => {}} />
+        <RangeStep
+          value={rangeValue}
+          onChange={(eValue) => refreshList(eValue)}
+        />
       </div>
       <div className="col-span-full">
         <DragDropContext onDragEnd={onDragEnd}>
