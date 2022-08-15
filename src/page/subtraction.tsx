@@ -121,8 +121,15 @@ const Subtraction = () => {
     const options = new Set<string>([answer.toString()]);
 
     while (options.size < 4) {
-      const x = ~~(Math.random() * limit);
-      options.add(x.toString());
+      const randomNumber = Math.random();
+
+      const randomNumberWithLimit = ~~(randomNumber * limit);
+      console.log(randomNumberWithLimit > limit / 2);
+      const optionsValue =
+        randomNumberWithLimit > limit / 2
+          ? randomNumberWithLimit
+          : -randomNumberWithLimit;
+      options.add(optionsValue.toString());
     }
 
     console.log(options);
@@ -171,7 +178,7 @@ const Subtraction = () => {
   };
 
   return (
-    <div className="h-screen grid grid-cols-6 mt-[20%] container">
+    <div className="h-screen grid grid-cols-6  container">
       <div className="grid col-start-2 col-span-4">
         <RangeStep
           value={rangeValue}
