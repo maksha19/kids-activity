@@ -55,17 +55,23 @@ const EnglishPage = () => {
 
     const currentItem = checkWord[currentCharIndex]
     if (currentItem.char === clickedChar) {
+      textToSpeech(clickedChar)
       previousCheckWord[currentCharIndex].isShow = true
       previousCurrentWord[index].isShow = false
       setCurrentCharIndex(currentCharIndex + 1)
       setCheckWord([...previousCheckWord])
       setCurrentWord([...previousCurrentWord])
-      console.log("previousCurrentWord", previousCurrentWord)
+
+      let isWordComplete = true
+      previousCheckWord.forEach((item) => isWordComplete = item.isShow)
+      if(isWordComplete){
+        textToSpeech(words[currentWordIndex])
+      }
     }
   }
 
-  const textToSpeech = () => {
-    const to_speak = new SpeechSynthesisUtterance(words[currentWordIndex]);
+  const textToSpeech = (word: string) => {
+    const to_speak = new SpeechSynthesisUtterance(word);
     to_speak.rate = 0.75
     to_speak.pitch = 0.75
     window.speechSynthesis.speak(to_speak);
@@ -119,7 +125,7 @@ const EnglishPage = () => {
               </button>
             </div>
             <div className="grid justify-items-center">
-              <img src={Speaker} className="App-logo grid justify-center cursor-pointer" alt="logo" onClick={() => textToSpeech()} />
+              <img src={Speaker} className="App-logo grid justify-center cursor-pointer" alt="logo" onClick={() => textToSpeech(words[currentWordIndex])} />
             </div>
             <div className="grid justify-items-end">
               <button className={classNames(nextDisabled ? "disabled disabled:opacity-75" : "cursor-pointer")} disabled={nextDisabled} onClick={() => changeCurrentWord(true)}>
