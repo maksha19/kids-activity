@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/kids-activity/static/css/main.b7af277d.css",
-    "main.js": "/kids-activity/static/js/main.729421a9.js",
+    "main.js": "/kids-activity/static/js/main.f876a122.js",
     "static/js/787.1d9ec42c.chunk.js": "/kids-activity/static/js/787.1d9ec42c.chunk.js",
     "static/media/arrow.svg": "/kids-activity/static/media/arrow.933737b9b73f452a4d8c38d58756e7ee.svg",
     "static/media/speaker.svg": "/kids-activity/static/media/speaker.637d391e056813fd109a13961e1bbd42.svg",
     "index.html": "/kids-activity/index.html",
     "main.b7af277d.css.map": "/kids-activity/static/css/main.b7af277d.css.map",
-    "main.729421a9.js.map": "/kids-activity/static/js/main.729421a9.js.map",
+    "main.f876a122.js.map": "/kids-activity/static/js/main.f876a122.js.map",
     "787.1d9ec42c.chunk.js.map": "/kids-activity/static/js/787.1d9ec42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b7af277d.css",
-    "static/js/main.729421a9.js"
+    "static/js/main.f876a122.js"
   ]
 }
