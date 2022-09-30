@@ -12,9 +12,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/kids-activity" element={<HomePage />} />
-          <Route path="/addition" element={<Addition />} />
-          <Route path="/subtraction" element={<Subtraction />} />
-          <Route path="/english" element={<EnglishPage />} />
+          <Route path="/kids-activity/addition" element={<Addition />} />
+          <Route path="/kids-activity/subtraction" element={<Subtraction />} />
+          <Route path="/kids-activity/english" element={<EnglishPage />} />
         </Routes>
       </BrowserRouter>
     </div>

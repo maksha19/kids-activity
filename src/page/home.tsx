@@ -9,18 +9,18 @@ const HomePage = () => {
   const navigationTo = (index: string) => {
     switch (index) {
       case "0": {
-        navigation("/addition");
+        navigation("/kids-activity/addition");
         break;
       }
       case "1": {
-        navigation("/subtraction");
+        navigation("/kids-activity/subtraction");
         break;
       }
       case "2": {
         break;
       }
       case "3": {
-        navigation("/english");
+        navigation("/kids-activity/english");
         break;
       }
     }
